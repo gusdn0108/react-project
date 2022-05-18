@@ -1,0 +1,10 @@
+.layout-footer {
+    background-color: pink;
+    height: 100px;
+    transition: margin-left $transitionDuration;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--surface-border);
+}

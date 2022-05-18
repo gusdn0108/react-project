@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies":{
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+     "express": "^4.17.1",
+     "http": "^0.0.1-security",
+     "https": "^1.0.0",
+     "jsonwebtoken": "^8.5.1",
+     "jwt-decode": "^3.0.0-beta.2",
+     "mysql": "^2.18.1",
+     "mysql2": "^2.2.5",
+     "nodemon": "^2.0.4",
+     "path": "^0.12.7",
+     "sequelize": "^6.3.5",
+     "socket.io": "^4.3.1"
+  }
+}
