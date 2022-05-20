@@ -1,0 +1,139 @@
+.form-demo .card {
+    min-width: 650px;
+    height: 700px;
+    padding: 90px;
+
+}
+
+.form-demo .card form {
+    margin-top: 3rem;
+}
+
+.form-demo .card .field {
+    margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 960px) {
+    .form-demo .card {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .form-demo .card {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+
+
+.p-button {
+    background-color: rgb(255, 208, 216);
+    border: red;
+}
+
+
+.p-inputtext:enabled:hover {
+    border-color: rgb(255, 208, 216);
+
+}
+
+
+
+.text-center {
+    font-weight: bold;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    border-color: rgb(255, 208, 216);
+    background-color: rgb(255, 208, 216);
+}
+
+*/ .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+    border-color: rgb(255, 208, 216);
+}
+
+*/ .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+    border-color: rgb(255, 208, 216);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #C7D2FE;
+    border-color: rgb(255, 208, 216);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+    border-color: rgb(255, 208, 216);
+    background: rgb(255, 208, 216);
+    color: #ffffff;
+}
+
+.p-tabview .p-tabview-nav .p-tabview-ink-bar {
+    background-color: pink;
+}
+
+/* :root {
+    --focus-ring : rgb(255, 208, 216);
+} */
+
+
+.p-inputtext:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.1rem rgb(255, 208, 216);
+    border-color: magenta;
+}
+
+.p-button:enabled:active,
+.p-button:not(button):not(a):not(.p-disabled):active {
+    background: pink;
+    color: #ffffff;
+    border-color: pink;
+}
+
+.p-button:enabled:hover,
+.p-button:not(button):not(a):not(.p-disabled):hover {
+    background: pink;
+    color: #ffffff;
+    border-color: pink;
+}
+
+.p-tabview .p-tabview-nav-btn.p-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 0.2rem #00fbff;
+}
+
+.p-button:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px white, 0 1px 2px 0 black;
+}
+
+
+
+.p-checkbox .p-checkbox-box.p-highlight:not(.p-disabled):hover {
+    border-color: pink;
+    background: white;
+    color: pink(0, 225, 255);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+    border-color: pink;
+}
+
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #C7D2FE;
+    border-color: pink;
+}
+
+
+.text-center {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}

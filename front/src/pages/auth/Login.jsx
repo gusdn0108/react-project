@@ -1,31 +1,28 @@
-
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Calendar } from 'primereact/calendar';
 import { Password } from 'primereact/password';
-import { Checkbox } from 'primereact/checkbox';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
-import './SignUp.css';
+import '../../common/css/SignUp.css'
 import { AUTH_SIGNIN } from '../../common/path';
 import { MAIN_API } from '../../lib/axios';
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { setLogin } from '../../redux';
+import { Link } from 'react-router-dom';
 
 const Login = ({ setLogin, isLogin }) => {
 
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-
-
+  const auth = useSelector((state) => {
+    return state.auth
+  })
 
   const validate = (data) => {
     let errors = {};
-
-
 
     if (!data.email) {
       errors.email = '이메일을 입력해주세요.';
@@ -38,25 +35,21 @@ const Login = ({ setLogin, isLogin }) => {
       errors.password = '패스워드를 입력해주세요';
     }
 
-
-
     return errors;
   };
   const [isLoading, setIsLoading] = useState(false)
   const onSubmit = (data, form) => {
-    // setFormData(data);
-    // setShowMessage(true);
+    setFormData(data);
+    setShowMessage(true);
+    form.restart();
 
-    // form.restart();
-    console.log(data)
     // axios 처리
 
     MAIN_API(setIsLoading, AUTH_SIGNIN, (res) => {
-      console.log(res.data.status)
-      if (res.data.status) {
-        setLogin(res.data.userData)
 
-        localStorage.setItem(`token`, res.data.token)
+      if (res.data.status) {
+        setLogin(res.data.userData);
+        localStorage.setItem(`token`, res.data.token);
       }
     },
       data
@@ -68,7 +61,8 @@ const Login = ({ setLogin, isLogin }) => {
     return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
   };
 
-  const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
+  const dialogFooter = <div className="flex justify-content-center"><Link to="/"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></Link></div>;
+  const faildialogFooter = <div className="flex justify-content-center"><Link to="/login"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></Link></div>;
   const passwordHeader = <h6>패스워드 </h6>;
   const passwordFooter = (
     <React.Fragment>
@@ -83,21 +77,34 @@ const Login = ({ setLogin, isLogin }) => {
     </React.Fragment>
   );
 
+
+
   return (
+
     <div className="form-demo">
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+
+      {isLogin === true ? <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
         <div className="flex align-items-center flex-column pt-6 px-3">
-          <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
-          <h5>회원가입이 완료되었습니다</h5>
-          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            당신의 닉네임은 <b>{formData.username}</b> 입니다 <p> 아이디는  <b>{formData.email}</b> 입니다!</p>
+          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
+          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+            환영합니다. {auth.username} 님 !
           </p>
         </div>
-      </Dialog>
+
+      </Dialog> : <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={faildialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+        <div className="flex align-items-center flex-column pt-6 px-3">
+          <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
+          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
+            로그인에 실패하였습니다 아이디 또는 비밀번호를 확인해주세요
+          </p>
+        </div>
+      </Dialog>}
+
+
 
       <div className="flex justify-content-center">
         <div className="card">
-          <h5 className="text-center">회원가입</h5>
+          <h5 className="text-center">로그인</h5>
           <Form onSubmit={onSubmit} initialValues={{ email: '', password: '', }} validate={validate} render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit} className="p-fluid">
               <Field name="email" render={({ input, meta }) => (
@@ -119,8 +126,6 @@ const Login = ({ setLogin, isLogin }) => {
                   {getFormErrorMessage(meta)}
                 </div>
               )} />
-
-
               <Button type="submit" label="로그인" className="mt-2" />
             </form>
           )} />
