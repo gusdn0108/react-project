@@ -1,4 +1,4 @@
-export const admin_menu= [
+export const admin_menu = [
     {
         label: 'Home',
         items: [{
@@ -50,12 +50,12 @@ export const admin_menu= [
             }
         ]
     },
-   
+
 ];
 
-export const user_side_menu=[
+export const user_side_menu = [
     {
-        label: '유저메뉴들', icon: 'pi pi-fw pi-search' ,to: '/Signup',
+        label: '유저메뉴들', icon: 'pi pi-fw pi-search', to: '/Signup',
         items: [
             {
                 label: '프로필 변경', icon: 'pi pi-fw pi-bookmark',
@@ -99,16 +99,17 @@ export const user_side_menu=[
             }
         ]
     },
-]  
+]
 
-export const main_menu=[
+export const main_menu = [
     {
         label: 'Menu', icon: 'pi pi-fw pi-search',
         items: [
-            {label: '로그인', icon: 'pi pi-fw pi-bookmark',to:"/login" },
-            {label: '회원가입', icon: 'pi pi-fw pi-bookmark',to:"/signup" },
-            {label: 'ㅁㄴㅇㄹ', icon: 'pi pi-fw pi-bookmark',to:"/signup" },
-            {label: 'ㅁㄴㅇㄹ', icon: 'pi pi-fw pi-bookmark',to:"/signup" },
+            { label: '메인', icon: 'pi pi-fw pi-bookmark', to: "/" },
+            { label: '로그인', icon: 'pi pi-fw pi-bookmark', to: "/login" },
+            { label: '회원가입', icon: 'pi pi-fw pi-bookmark', to: "/signup" },
+            { label: '게시판', icon: 'pi pi-fw pi-bookmark', to: "/board" },
         ]
     },
-]  
+]
+

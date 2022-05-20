@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 import { Button } from 'primereact/button';
-import './ButtonDemo.css';
+import '././css/Button.css';
 
 const RandomButton = () => {
 
     const [loading1, setLoading1] = useState(false);
-    const [loading2, setLoading2] = useState(false);
 
     const onLoadingClick1 = () => {
         setLoading1(true);
 
         setTimeout(() => {
             setLoading1(false);
-        }, 500);
-    }
-
-    const onLoadingClick2 = () => {
-        setLoading2(true);
-
-        setTimeout(() => {
-            setLoading2(false);
         }, 500);
     }
 

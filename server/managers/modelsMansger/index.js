@@ -1,5 +1,6 @@
 import db from '../dbManager/db'
 import { user_model } from '../models/User';
+import { board_model } from '../models/Board';
 /**
  * Types....
  * INTEGER,
@@ -14,6 +15,8 @@ const model = (table) => {
     switch (table) {
         case 'user':
             return user_model;
+        case 'board':
+            return board_model;
         default: break;
     }
 }

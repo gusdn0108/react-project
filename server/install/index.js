@@ -1,7 +1,7 @@
 import db from '../managers/dbManager/db'
 import mysql from 'mysql'
 import bcrypt from 'bcrypt'
-import { initDataTables, usersInit } from './init';
+import { boardInit, initDataTables, usersInit } from './init';
 
 const dbCheck = async () => {
     try {
@@ -40,7 +40,7 @@ const makeTable = async () => {
         table(tableop.tableName, tableop.model).sync().then(async () => {
             for (let ii = 0; ii < usersInit.length; ii++) {
                 bcrypt.hash(usersInit[ii].password, 10, async (err, hash) => {
-                    await table(tableop.tableName, tableop.model).create({ ...usersInit[ii], password: hash })
+                    await table(tableop.tableName, tableop.model).create({ ...usersInit[ii], ...boardInit[ii], password: hash })
                 })
             }
         })

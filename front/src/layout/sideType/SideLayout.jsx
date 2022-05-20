@@ -18,8 +18,8 @@ import '../../assets/demo/Demos.scss';
 import '../../assets/layout/layout.scss';
 import './App.scss';
 
-const SideLayout = ({children,menu}) => {
-  
+const SideLayout = ({ children, menu }) => {
+
 
     const [layoutMode, setLayoutMode] = useState('static');
     const [layoutColorMode, setLayoutColorMode] = useState('light')
@@ -53,22 +53,22 @@ const SideLayout = ({children,menu}) => {
 
 
 
-    const onInputStyleChange = (inputStyle) => {
-        setInputStyle(inputStyle);
-    }
+    // const onInputStyleChange = (inputStyle) => {
+    //     setInputStyle(inputStyle);
+    // }
 
-    const onRipple = (e) => {
-        PrimeReact.ripple = e.value;
-        setRipple(e.value)
-    }
+    // const onRipple = (e) => {
+    //     PrimeReact.ripple = e.value;
+    //     setRipple(e.value)
+    // }
 
-    const onLayoutModeChange = (mode) => {
-        setLayoutMode(mode)
-    }
+    // const onLayoutModeChange = (mode) => {
+    //     setLayoutMode(mode)
+    // }
 
-    const onColorModeChange = (mode) => {
-        setLayoutColorMode(mode)
-    }
+    // const onColorModeChange = (mode) => {
+    //     setLayoutColorMode(mode)
+    // }
 
     const onWrapperClick = (event) => {
         if (!menuClick) {
@@ -174,14 +174,14 @@ const SideLayout = ({children,menu}) => {
 
             <div className="layout-main-container">
                 <div className="layout-main">
-                  {children}
-                   
+                    {children}
+
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />
             </div>
 
-          
+
             <CSSTransition classNames="layout-mask" timeout={{ enter: 200, exit: 200 }} in={mobileMenuActive} unmountOnExit>
                 <div className="layout-mask p-component-overlay"></div>
             </CSSTransition>
