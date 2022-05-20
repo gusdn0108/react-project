@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     dialect: "mysql",
     logging: false,
-    timezone:"+09:00",
+    timezone: "+09:00",
     pool: {
       max: 5,
       min: 0,
@@ -23,5 +23,5 @@ const sequelize = new Sequelize(
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.queryInterface  =  sequelize.getQueryInterface();
+db.queryInterface = sequelize.getQueryInterface();
 module.exports = db;
