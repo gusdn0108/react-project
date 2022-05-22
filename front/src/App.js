@@ -8,7 +8,9 @@ import Signup from "./pages/auth/SignUp";
 import Main from "./pages/Main";
 import Boardlist from "./pages/board/Boardlist";
 import BoardWrite from "./pages/board/BoardWrite";
+
 import BoardView from "./pages/board/BoardView";
+
 
 const App = () => {
     return (
@@ -24,6 +26,7 @@ const App = () => {
                     <Route path="/board/write/:category" element={<BoardWrite />} />
                     <Route path="/board/view/:id" element={<BoardView/>}/>
                     
+
                 </Routes>
             </LayoutDivider>
         </div>

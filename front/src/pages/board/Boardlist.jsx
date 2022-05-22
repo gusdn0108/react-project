@@ -11,6 +11,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import '../../common/css/PrimeBoard.css'
+
 import { useNavigate,useParams } from 'react-router-dom';
 
 
@@ -19,6 +20,8 @@ const navigate = useNavigate()
 const {category} = useParams()
 
     
+
+
     let emptyProduct = {
         id: null,
         name: '',
@@ -43,18 +46,18 @@ const {category} = useParams()
 
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
+
     }, []); 
 
 
 
   
 
+
     const hideDialog = () => {
         setSubmitted(false);
         setProductDialog(false);
     }
-
-
 
     const saveProduct = () => {
         setSubmitted(true);
@@ -82,7 +85,6 @@ const {category} = useParams()
     }
 
 
-
     const findIndexById = (id) => {
         let index = -1;
         for (let i = 0; i < products.length; i++) {
@@ -102,11 +104,6 @@ const {category} = useParams()
         }
         return id;
     }
-
-  
-
-
-
 
     const onCategoryChange = (e) => {
         let _product = { ...product };
@@ -130,6 +127,7 @@ const {category} = useParams()
                 <Button label="글쓰기" icon="pi pi-plus" className="p-button-success mr-2" onClick={()=>{
                      navigate(`/board/write/${category}`)
                 }} />
+
             </React.Fragment>
         )
     }
@@ -140,12 +138,14 @@ const {category} = useParams()
     const header = (
         <div className="table-header">
             <h5 className="mx-0 my-1">{category === 'outside'? '야외':'실내'} 데이트 게시판</h5>
+
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
             </span>
         </div>
     );
+
     const productDialogFooter = (
         <React.Fragment>
             <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
@@ -166,12 +166,14 @@ const {category} = useParams()
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+
                     <Column field="id"  style={{ minWidth: '12rem' }}></Column>
                     <Column field="title" header="제목" style={{ minWidth: '23rem' }}></Column>
                     <Column field="username" header="nickname" ></Column>
                     <Column field="updatedAt" header="date" style={{ minWidth: '10rem' }}></Column>
 
                     
+
                 </DataTable>
             </div>
 
@@ -192,6 +194,7 @@ const {category} = useParams()
                     <div className="formgrid grid">
                         <div className="field-radiobutton col-6">
                             <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
+
                             <label htmlFor="category1">야외 데이트 게시판</label>
                         </div>
                         <div className="field-radiobutton col-6">
@@ -203,6 +206,7 @@ const {category} = useParams()
 
         
             </Dialog>
+
 
         </div>
     );

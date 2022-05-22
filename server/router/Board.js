@@ -2,6 +2,7 @@ const express = require('express')
 const { Table } = require('../managers/modelsMansger')
 const router = express.Router()
 
+
 router.post('/write',async(req,res)=>{
   
   try {
@@ -11,6 +12,7 @@ router.post('/write',async(req,res)=>{
             status: true,
             result: write,
             msg: '게시글 잘썻음'
+
         })
     })
   } catch (error) {
@@ -28,5 +30,8 @@ router.post('/view',async(req,res)=>{
         
     }
 })
+
+
+
 
 module.exports = router;

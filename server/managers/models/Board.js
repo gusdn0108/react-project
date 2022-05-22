@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 
 export const board_model = {
+
     subject:{
         type:Sequelize.STRING,
         allowNull: false,
@@ -17,4 +18,5 @@ export const board_model = {
         type:Sequelize.STRING
     }
     
+
 }

@@ -108,8 +108,10 @@ export const main_menu = [
             { label: '메인', icon: 'pi pi-fw pi-bookmark', to: "/" },
             { label: '로그인', icon: 'pi pi-fw pi-bookmark', to: "/login" },
             { label: '회원가입', icon: 'pi pi-fw pi-bookmark', to: "/signup" },
+
             { label: '야외 데이트 게시판', icon: 'pi pi-fw pi-bookmark', to: "/board/list/outside" },
             { label: '실내 데이트 게시판', icon: 'pi pi-fw pi-bookmark', to: "/board/list/inside" },
+
         ]
     },
 ]

@@ -1,3 +1,4 @@
+
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import React from 'react'
@@ -90,6 +91,5 @@ const BoardWrite = () => {
 
 
   )
-}
 
 export default BoardWrite

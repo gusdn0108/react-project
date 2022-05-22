@@ -23,6 +23,28 @@ const io = socket(server, {
 })
 const server = http.createServer(app);
 
+
+app.use((req, res, next) => {
+    console.log(req, headers.Authorization)
+    try {
+        const userData = jwt.verify(
+            req.headers.authorization,
+            process.env.SECRET_KEY
+        )
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '500mb' }));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));
