@@ -4,16 +4,11 @@ const { Table } = require('../managers/modelsMansger')
 const router = express.Router()
 
 
-router.post('/board', async (req, res) => {
-    const { data } = req.body
+router.get('/write', async (req, res) => {
+
     try {
-        Table('board').create(req.body).then((data) => {
-            console.log(req.body)
-            res.json({
-                status: true,
-                result: data,
-                msg: ''
-            })
+        await Table('board').create({
+            username: "asdf"
         })
 
     } catch (error) {
@@ -24,5 +19,8 @@ router.post('/board', async (req, res) => {
         })
     }
 })
+
+
+
 
 module.exports = router;
