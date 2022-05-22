@@ -1,10 +1,20 @@
 import { Sequelize } from "sequelize";
 
 export const board_model = {
-    username: {
-        type: Sequelize.STRING(30),
+    subject:{
+        type:Sequelize.STRING,
+        allowNull: false,
     },
-    content: {
-        type: Sequelize.STRING,
+    content:{
+        type:Sequelize.TEXT('long'),
+        allowNull: false,
     },
+    category:{
+        type:Sequelize.STRING,
+    },
+    
+    userid:{
+        type:Sequelize.STRING
+    }
+    
 }

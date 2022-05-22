@@ -7,19 +7,22 @@ import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import '../../common/css/SignUp.css'
-import { AUTH_SIGNIN } from '../../common/path';
-import { MAIN_API } from '../../lib/axios';
-import { connect, useSelector } from 'react-redux'
-import { setLogin } from '../../redux';
 import { Link } from 'react-router-dom';
+import { MAIN_API } from '../../lib/axios';
+import { AUTH_SIGNIN } from '../../common/path';
+import {connect , useSelector} from 'react-redux'
+import {  setLogin } from '../../redux';
 
-const Login = ({ setLogin, isLogin }) => {
+
+
+const Login = ({setLogin, isLogin}) => {
 
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  const auth = useSelector((state) => {
+  const auth = useSelector((state)=>{
     return state.auth
   })
+
 
   const validate = (data) => {
     let errors = {};
@@ -37,23 +40,19 @@ const Login = ({ setLogin, isLogin }) => {
 
     return errors;
   };
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoadding, setIsLoading] =useState(false)
   const onSubmit = (data, form) => {
     setFormData(data);
     setShowMessage(true);
     form.restart();
-
-    // axios 처리
-
-    MAIN_API(setIsLoading, AUTH_SIGNIN, (res) => {
-
-      if (res.data.status) {
+    
+    MAIN_API(setIsLoading,AUTH_SIGNIN,(res)=>{
+      if(res.data.status){
+        console.log(res.data)
         setLogin(res.data.userData);
-        localStorage.setItem(`token`, res.data.token);
+        localStorage.setItem('token',res.data.token)
       }
-    },
-      data
-    )
+    },data)
   };
 
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
@@ -83,7 +82,7 @@ const Login = ({ setLogin, isLogin }) => {
 
     <div className="form-demo">
 
-      {isLogin === true ? <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+{isLogin === true ? <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
         <div className="flex align-items-center flex-column pt-6 px-3">
           <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
           <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
@@ -136,14 +135,15 @@ const Login = ({ setLogin, isLogin }) => {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    isLogin: state.auth.isLogin
-  }
+
+const mapStateToProps = (state)=>{
+return {
+  isLogin : state.auth.isLogin
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setLogin: (data) => dispatch(setLogin(data))
-  }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+const mapDispatchToProps = (dispatch)=>{
+return {
+  setLogin: (data)=> dispatch(setLogin(data))
+}
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
