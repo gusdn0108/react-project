@@ -9,6 +9,9 @@ import Main from "./pages/Main";
 import Boardlist from "./pages/board/Boardlist";
 import BoardWrite from "./pages/board/BoardWrite";
 
+import BoardView from "./pages/board/BoardView";
+
+
 const App = () => {
     return (
         <div>
@@ -21,10 +24,13 @@ const App = () => {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/board/list/:category" element={<Boardlist />} />
                     <Route path="/board/write/:category" element={<BoardWrite />} />
+                    <Route path="/board/view/:id" element={<BoardView/>}/>
+                    
+
                 </Routes>
             </LayoutDivider>
         </div>
-    );
+    ); 
 };
 
 export default App;
