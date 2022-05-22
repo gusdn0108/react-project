@@ -41,7 +41,9 @@
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.4.1",
         "sass": "^1.32.8",
-        "service": "^0.1.4"
+        "service": "^0.1.4",
+        "suneditor": "^2.43.6",
+        "suneditor-react": "^3.4.0"
     },
     "scripts": {
         "start": "react-scripts start",

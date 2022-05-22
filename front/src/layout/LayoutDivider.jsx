@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { admin_menu, user_side_menu ,main_menu} from "../common/menu";
+import { admin_menu, user_side_menu, main_menu } from "../common/menu";
 import MainLayout from "./mainType/MainLayout";
 import SideLayout from "./sideType/SideLayout";
 const LayoutDivider = ({ children }) => {
@@ -25,7 +25,7 @@ const LayoutDivider = ({ children }) => {
             setMainpath("main");
         };
     }, [location]);
-    
+
     switch (mainpath) {
         case "main":
             return <SideLayout menu={menu}>{children}</SideLayout>;

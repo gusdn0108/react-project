@@ -3,8 +3,8 @@ import {
     AUTH_UPDATE,
     AUTH_LOGOUT,
     AUTH_FAIL,
-
 } from './Types'
+
 const initialState = {
     isLoading: false,
     isStart: false,
