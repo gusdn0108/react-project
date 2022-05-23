@@ -7,6 +7,8 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/SignUp";
 import Main from "./pages/Main";
 import Button from "./pages/randomButton/Button";
+import Board from "./pages/miniBoard/MiniBoard"
+import MiniForm from "./pages/miniBoard/Form"
 
 const App = () => {
     return (
@@ -18,6 +20,9 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/Button" element={<Button />} />
+                    <Route path="/Board" element={<Board />} />
+                    <Route path="/MiniForm" element={<MiniForm />} />
+
                 </Routes>
             </LayoutDivider>
         </div>
