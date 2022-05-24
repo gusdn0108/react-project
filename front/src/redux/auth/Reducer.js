@@ -22,6 +22,7 @@ const initialState = {
     from: "",
     date: "",
     relationship: "",
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -40,7 +41,6 @@ const reducer = (state = initialState, action) => {
             }
         case AUTH_LOGOUT:
             localStorage.removeItem("token");
-            sessionStorage.removeItem('token');
             return { ...initialState, isStart: true }
         case AUTH_FAIL:
             return {

@@ -41,43 +41,59 @@ router.post('/signup', async (req, res) => {
     }
 })
 
-router.post('/signin', async (req, res) => {
+
+
+
+// 로그인 
+router.post('/signin',async (req,res)=>{
     try {
-        // console.log(req.body)
         const _user = await Table('user').findOne({
-            where: {
-                email: {
-                    [Op.eq]: req.body.email // op = option 약자 eq = 같다
+            where:{
+                email:{
+                    [Op.eq]: req.body.email
                 }
             }
         })
-        if (_user) {
-            if (bcrypt.compareSync(req.body.password, _user.dataValues.password)) {
-                // 패스워드 일치
+
+        if(_user){
+            if(bcrypt.compareSync(req.body.password, _user.dataValues.password)){
                 delete _user.dataValues.password
                 let token = jwt.sign({
                     ..._user.dataValues,
-                    exp: Math.floor(Date.now() / 1000) + 60,
-                    iat: Math.floor(Date.now() / 1000) // iat = 만들어진시간
+                    exp: Math.floor(Date.now() / 1000 ) + 600000,
+                    iat:Math.floor(Date.now() / 1000)
                 },
-                    process.env.SECRET_KEY
+                process.env.SECRET_KEY
                 )
                 _user.dataValues.token = token
-                res.json({ status: true, userData: _user.dataValues, token: token })
+                
+                res.json({
+                    status: true,
+                    userData: _user.dataValues,
+                    token:token
+                })
             } else {
-                // 패스워드 불일
-                res.json({ status: false, msg: "패스워드를 확인해주세요" })
+                res.json({
+                    status: false,
+                    msg:'너 비밀번호틀렸어 '
+                })
             }
         } else {
-            // 해당유저업승
-            res.json({ status: false, msg: "이메일를 확인해주세요" })
-            // navigate('/')
+            res.json({
+                status: false,
+                msg:'너 이메일이 틀렸엉 '
+            })
         }
     } catch (error) {
-        console.log(error)
-        res.json({ status: false, msg: "관리자에게 문의하세요" })
+        res.json({
+            status: false,
+            msg:'관리자한태 문의해봐 ㅎㅎ '
+        })
     }
-})
+    }
+)
+
+
 
 
 module.exports = router;

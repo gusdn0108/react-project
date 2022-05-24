@@ -7,13 +7,11 @@ export const initDataTables = [
 ]
 
 export const usersInit = [
-    { username: 'admin', password: 'admin', email: 'admin@admin.com', isAdmin: true }
+    { username: 'admin', password: 'admin', email: 'admin@admin.com', isAdmin: true },
+ 
 ]
 
-export const boardInit = [
-    // { username: 'admin', password: 'admin', email: 'admin@admin.com', isAdmin: true }
-    { data: "들어가니?" }
-]
+
 
 
 

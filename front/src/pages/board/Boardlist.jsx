@@ -11,11 +11,16 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import '../../common/css/PrimeBoard.css'
-import { useNavigate, useParams } from 'react-router-dom';
+
+import { useNavigate,useParams } from 'react-router-dom';
+
 
 const PrimeBoard = () => {
-    const navigate = useNavigate()
-    const { category } = useParams()
+const navigate = useNavigate()
+const {category} = useParams()
+
+    
+
 
     let emptyProduct = {
         id: null,
@@ -41,11 +46,13 @@ const PrimeBoard = () => {
 
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // const formatCurrency = (value) => {
-    //     return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    // }
+    }, []); 
+
+
+
+  
+
 
     const hideDialog = () => {
         setSubmitted(false);
@@ -76,6 +83,7 @@ const PrimeBoard = () => {
             setProduct(emptyProduct);
         }
     }
+
 
     const findIndexById = (id) => {
         let index = -1;
@@ -111,20 +119,26 @@ const PrimeBoard = () => {
         setProduct(_product);
     }
 
+ 
+
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <Button label="글쓰기" icon="pi pi-plus" className="p-button-success mr-2" onClick={() => {
-                    navigate(`/board/write/${category}`)
+                <Button label="글쓰기" icon="pi pi-plus" className="p-button-success mr-2" onClick={()=>{
+                     navigate(`/board/write/${category}`)
                 }} />
-                {/* <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} /> */}
+
             </React.Fragment>
         )
     }
 
+
+
+
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">{category === 'outside' ? '야외' : '실내'} 데이트 게시판</h5>
+            <h5 className="mx-0 my-1">{category === 'outside'? '야외':'실내'} 데이트 게시판</h5>
+
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -152,10 +166,14 @@ const PrimeBoard = () => {
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                    <Column field="id" sortable style={{ minWidth: '12rem' }}></Column>
-                    <Column field="title" header="제목" sortable style={{ minWidth: '23rem' }}></Column>
-                    <Column field="username" header="Name" ></Column>
-                    <Column field="updatedAt" header="date" sortable style={{ minWidth: '10rem' }}></Column>
+
+                    <Column field="id"  style={{ minWidth: '12rem' }}></Column>
+                    <Column field="title" header="제목" style={{ minWidth: '23rem' }}></Column>
+                    <Column field="username" header="nickname" ></Column>
+                    <Column field="updatedAt" header="date" style={{ minWidth: '10rem' }}></Column>
+
+                    
+
                 </DataTable>
             </div>
 
@@ -170,19 +188,23 @@ const PrimeBoard = () => {
                     <label htmlFor="description">내용</label>
                     <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
                 </div>
+
                 <div className="field">
                     <label className="mb-3">Category</label>
                     <div className="formgrid grid">
                         <div className="field-radiobutton col-6">
                             <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
-                            <label htmlFor="category1">Accessories</label>
+
+                            <label htmlFor="category1">야외 데이트 게시판</label>
                         </div>
                         <div className="field-radiobutton col-6">
                             <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.category === 'Clothing'} />
-                            <label htmlFor="category2">Clothing</label>
+                            <label htmlFor="category2">실내 데이트 게시판</label>
                         </div>
                     </div>
                 </div>
+
+        
             </Dialog>
 
 
